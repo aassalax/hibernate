@@ -12,6 +12,7 @@ public class Student {
     //@GeneratedValue(strategy = GenerationType.IDENTITY) //Laisse la base gérer l’auto-incrémentation via une colonne IDENTITY. Typiquement pour MySQL, SQL Server. Génère l'id au moment de l'insertion.
     private Long id;
 
+    //@Column(name="STUDENT_NAME", length=50, nullable=false, unique=false) // pour custom la colonne de la table
     private String name;
 
     public void setId(Long id) {
