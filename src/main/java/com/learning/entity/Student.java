@@ -25,6 +25,10 @@ public class Student {
     //private Date birthDate;
     private LocalDate birthDate;
 
+    //@Enumerated(EnumType.ORDINAL) // par defaut et l'annotation est obsolète dans ce cas
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -55,5 +59,13 @@ public class Student {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
