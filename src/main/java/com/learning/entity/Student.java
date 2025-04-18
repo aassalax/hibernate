@@ -3,7 +3,7 @@ package com.learning.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="STUDENT", schema="SCHOOL")
+//@Table(name="STUDENT", schema="SCHOOL") // pour set un autre nom que celui de l'entité pour le nom de la table
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //JPA choisit la stratégie appropriée selon la base de données utilisée.
