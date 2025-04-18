@@ -2,6 +2,9 @@ package com.learning.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 //@Table(name="STUDENT", schema="SCHOOL") // pour set un autre nom que celui de l'entité pour le nom de la table
 public class Student {
@@ -17,6 +20,10 @@ public class Student {
 
     @Transient // pour ne pas persister ce champ
     private Integer age;
+
+    //@Temporal(TemporalType.DATE) // depuis JPA 3.1 le support existe pour les LocalDate, LocalTime, LocalDateTime
+    //private Date birthDate;
+    private LocalDate birthDate;
 
     public void setId(Long id) {
         this.id = id;
@@ -40,5 +47,13 @@ public class Student {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }
