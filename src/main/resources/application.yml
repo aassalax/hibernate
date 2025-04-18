@@ -12,12 +12,3 @@ spring:
       hibernate:
         format_sql: true
         default_schema: SCHOOL
-
-app:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/hibernate_learning
-    username: admin
-    password: admin123
-    driver: org.postgresql.Driver
-    dialect: org.hibernate.dialect.PostgreSQLDialect
-    hbm2ddl: update
