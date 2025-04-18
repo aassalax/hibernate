@@ -1,11 +1,9 @@
 package com.learning.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name="STUDENT", schema="SCHOOL")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //JPA choisit la stratégie appropriée selon la base de données utilisée.
