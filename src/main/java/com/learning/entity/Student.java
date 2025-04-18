@@ -15,6 +15,9 @@ public class Student {
     //@Column(name="STUDENT_NAME", length=50, nullable=false, unique=false) // pour custom la colonne de la table
     private String name;
 
+    @Transient // pour ne pas persister ce champ
+    private Integer age;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -29,5 +32,13 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
