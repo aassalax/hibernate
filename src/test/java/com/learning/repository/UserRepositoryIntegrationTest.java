@@ -7,6 +7,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -73,5 +75,16 @@ public class UserRepositoryIntegrationTest {
     public void testPreLoadAnnotation(){
         User bob = userRepository.findByUserName("Boby");
         assertEquals("Bob User", bob.getFullName());
+    }
+
+    @Test
+    @Disabled
+    public void testPreLoadAnnotation_2(){
+        User bob = userRepository.findByUserName("Boby");
+        Integer bobId = bob.getId();
+
+        Optional<User> foundUser = userRepository.findById(bobId); //Find by id but still not work !
+        assertTrue(foundUser.isPresent());
+        assertEquals("Bob User", foundUser.get().getFullName());
     }
 }
