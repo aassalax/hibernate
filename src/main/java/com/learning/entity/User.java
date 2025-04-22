@@ -1,9 +1,11 @@
 package com.learning.entity;
 
+import com.learning.utils.AuditTrailListener;
 import jakarta.persistence.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+@EntityListeners(AuditTrailListener.class)
 @Entity
 public class User {
     private static Log log = LogFactory.getLog(User.class);
