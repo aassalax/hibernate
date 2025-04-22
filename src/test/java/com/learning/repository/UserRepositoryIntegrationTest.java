@@ -5,6 +5,8 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.Optional;
@@ -71,14 +73,14 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    @Disabled
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public void testPreLoadAnnotation(){
         User bob = userRepository.findByUserName("Boby");
         assertEquals("Bob User", bob.getFullName());
     }
 
     @Test
-    @Disabled
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public void testPreLoadAnnotation_2(){
         User bob = userRepository.findByUserName("Boby");
         Integer bobId = bob.getId();

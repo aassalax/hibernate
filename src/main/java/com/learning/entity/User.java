@@ -92,9 +92,9 @@ public class User {
         log.info("Updated user: " + userName);
     }
 
-    //TODO : only annotation with failing test see : testPreLoadAnnotation() in UserRepositoryIntegrationTest.java
     @PostLoad
     public void logUserLoad() {
-        fullName = firstName + " " + lastName;
+        setFullName(firstName + " " + lastName);
+        log.info("PostLoad triggered, fullName set to: " + fullName);
     }
 }
