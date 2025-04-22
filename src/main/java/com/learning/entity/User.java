@@ -13,7 +13,9 @@ public class User {
     private int id;
 
     private String userName;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     @Transient
     private String fullName;
@@ -88,6 +90,7 @@ public class User {
         log.info("Updated user: " + userName);
     }
 
+    //TODO : only annotation with failing test see : testPreLoadAnnotation() in UserRepositoryIntegrationTest.java
     @PostLoad
     public void logUserLoad() {
         fullName = firstName + " " + lastName;

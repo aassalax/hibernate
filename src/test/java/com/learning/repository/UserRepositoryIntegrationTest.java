@@ -1,15 +1,13 @@
 package com.learning.repository;
 
 import com.learning.entity.User;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -35,7 +33,6 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(alice);
     }
 
-
     @Test
     public void testFindByUserName_UserExists() {
         User foundUser = userRepository.findByUserName("Boby");
@@ -50,5 +47,31 @@ public class UserRepositoryIntegrationTest {
         User foundUser = userRepository.findByUserName("nonExistingUser");
 
         assertNull(foundUser);
+    }
+
+    @Test
+    public void testUpdateUser() {
+        User bob = userRepository.findByUserName("Boby");
+        bob.setFirstName("Bobby");
+        userRepository.save(bob);
+
+        User foundUser = userRepository.findByUserName("Boby");
+        assertEquals("Bobby", foundUser.getFirstName());
+    }
+
+    @Test
+    public void testDeleteUser() {
+        User bob = userRepository.findByUserName("Boby");
+        userRepository.delete(bob);
+
+        User foundUser = userRepository.findByUserName("Boby");
+        assertNull(foundUser);
+    }
+
+    @Test
+    @Disabled
+    public void testPreLoadAnnotation(){
+        User bob = userRepository.findByUserName("Boby");
+        assertEquals("Bob User", bob.getFullName());
     }
 }
