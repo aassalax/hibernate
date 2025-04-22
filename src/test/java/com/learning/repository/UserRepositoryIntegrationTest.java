@@ -85,7 +85,7 @@ public class UserRepositoryIntegrationTest {
         User bob = userRepository.findByUserName("Boby");
         Integer bobId = bob.getId();
 
-        Optional<User> foundUser = userRepository.findById(bobId); //Find by id but still not work !
+        Optional<User> foundUser = userRepository.findById(bobId);
         assertTrue(foundUser.isPresent());
         assertEquals("Bob User", foundUser.get().getFullName());
     }
