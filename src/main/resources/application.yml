@@ -11,4 +11,5 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_schema: SCHOOL
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
